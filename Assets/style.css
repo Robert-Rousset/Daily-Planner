@@ -2,6 +2,8 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   line-height: 1;
+  background: rgb(36,0,20);
+background: linear-gradient(90deg, rgba(36,0,20,0.46262254901960786) 0%, rgba(54,9,121,0.12648809523809523) 25%, rgba(0,212,255,0.6446953781512605) 100%);
 }
 
 textarea{
@@ -39,45 +41,45 @@ textarea{
 
 .hour {
   text-align: center;
-  background-color: #ffffff;
+  background: none;
   color: #000000;
   border-top: 1px dashed #000000;
-  padding-top: 40px
+  padding-top: 20px;
+  font-size: 20px;
 }
 
 .past {
-  border-top: rgb(129, 129, 129) 1px solid;
+  border-top: rgb(184, 184, 184) 2px solid;
+  border-bottom: rgb(175, 175, 175) 2px solid;
   background-color: #d3d3d3;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .present {
   background-color:#77dd77;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .future {
+  border-top: rgba(0, 0, 0, 0.2) 2px solid;
+  border-bottom: rgba(0, 0, 0, 0.2) 2px solid;
   background-color: #6193ff;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .saveBtn {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  background-color: #06AED5;
+  background: none;
   color: white;
   font-size: 50px;
 }
 
 .saveBtn i:hover {
-  font-size: 80px;
+  font-size: 70px;
   transition: all .3s ease-in-out;
-}
-
-.row {
-  height: 100px;
 }
 

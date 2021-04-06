@@ -10,7 +10,7 @@ $(document).ready(function(){
   var container = $('.container')
 
   //THIS IS TO GET THE STRUCTURE OF A ROW FOR THE AMOUNT OF HOURS//
-  for (let hours = 10; hours <= 29; hours++) {
+  for (let hours = 8; hours <= 17; hours++) {
   var row = $('<div>')
   row.addClass('row')
   container.append(row)
@@ -26,36 +26,40 @@ $(document).ready(function(){
     hour.text(hours -12 + ":00PM")
   }
   
-  row.append(hour)
+  row.append(hour);
 
   //THIS IS THE TEXT AREA//
-  var userInput = $('<textarea>')
-  userInput.addClass('col').attr('id', 'description')
-  row.append(userInput)
+  var userInput = $('<textarea>');
+  userInput.addClass('col').attr('id', 'description');
+  row.append(userInput);
+
+  //ADD LOCAL STORAGE TO USER INPUT//
+
+  userInput.textContent = localStorage.getItem(hours);
 
   //FOR THE CHANGING COLOURS//
 
-    if(hours  < currentTime){
-      $(userInput).addClass('past')
-      $(userInput).removeClass('present')
-      $(userInput).removeClass('future')
+    if(hours  < 12){
+      userInput.addClass('past')
+      userInput.removeClass('present')
+      userInput.removeClass('future')
     }
-    if(hours === currentTime){
-      $(userInput).removeClass('past')
-      $(userInput).addClass('present')
-      $(userInput).removeClass('future')
+    if(hours === 12){
+      userInput.removeClass('past')
+      userInput.addClass('present')
+      userInput.removeClass('future')
     }
-    if(hours > currentTime){
-      $(userInput).removeClass('past')
-      $(userInput).removeClass('present')
-      $(userInput).addClass('future')
+    if(hours > 12){
+      userInput.removeClass('past')
+      userInput.removeClass('present')
+      userInput.addClass('future')
     }
   
 
 
   //SAVE BUTTON//
   var button = $('<button>')
-  button.addClass('saveBtn col col-lg-2')
+  button.addClass('saveBtn col col-lg-1')
   row.append(button)
 
   //CURRENT TIME//
@@ -71,11 +75,7 @@ $(document).ready(function(){
 
     var userText = $('#description').val()
     localStorage.setItem(hours, userText)
-    var Element = document.getElementById("description")
-    Element.style.color = "Black"
-    
-    $(Element).textContent = localStorage.getItem(hours)
-    console.log(Element)
+
     console.log(hours)
     console.log(currentTime)
     console.log(userText)

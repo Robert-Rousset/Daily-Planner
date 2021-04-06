@@ -1,6 +1,5 @@
 var currentTime = moment().hour();
 
-
 $(document).ready(function(){
   //ADDING CURRENT DAY AT THE TOP OF THE PAGE
   var currentDay = $('#currentDay')
@@ -25,7 +24,6 @@ $(document).ready(function(){
   if (hours > 12){
     hour.text(hours -12 + ":00PM")
   }
-  
   row.append(hour);
 
   //THIS IS THE TEXT AREA//
@@ -34,29 +32,24 @@ $(document).ready(function(){
   row.append(userInput);
 
   //ADD LOCAL STORAGE TO USER INPUT//
-
   userInput.textContent = localStorage.getItem(hours);
 
   //FOR THE CHANGING COLOURS//
-
-    if(hours  < 12){
+    if(hours  < currentTime){
       userInput.addClass('past')
       userInput.removeClass('present')
       userInput.removeClass('future')
     }
-    if(hours === 12){
+    if(hours === currentTime){
       userInput.removeClass('past')
       userInput.addClass('present')
       userInput.removeClass('future')
     }
-    if(hours > 12){
+    if(hours > currentTime){
       userInput.removeClass('past')
       userInput.removeClass('present')
       userInput.addClass('future')
     }
-  
-
-
   //SAVE BUTTON//
   var button = $('<button>')
   button.addClass('saveBtn col col-lg-1')
@@ -69,7 +62,6 @@ $(document).ready(function(){
 
   //MAKING THE SAVED CONTENT APPEAR AFTER REFRESH//
   
-
   //MAKING THE BUTTON SAVE THE USERS CONTENT TO LOCAL STORAGE//
   button.on("click", function(){
 
@@ -81,18 +73,5 @@ $(document).ready(function(){
     console.log(userText)
     console.log(localStorage.getItem(hours))
   })
-
   } 
-
-
-    
- 
 });
-
-
-
-
-
-
-
-

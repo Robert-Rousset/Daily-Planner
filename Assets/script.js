@@ -26,13 +26,15 @@ $(document).ready(function(){
   }
   row.append(hour);
 
+
   //THIS IS THE TEXT AREA//
   var userInput = $('<textarea>');
   userInput.addClass('col').attr('id', 'description');
   row.append(userInput);
+  var textarea = document.getElementById('description')
+  textarea.textContent = localStorage.getItem(8);
 
-  //ADD LOCAL STORAGE TO USER INPUT//
-  userInput.textContent = localStorage.getItem(hours);
+
 
   //FOR THE CHANGING COLOURS//
     if(hours  < currentTime){
@@ -63,9 +65,9 @@ $(document).ready(function(){
   //MAKING THE SAVED CONTENT APPEAR AFTER REFRESH//
   
   //MAKING THE BUTTON SAVE THE USERS CONTENT TO LOCAL STORAGE//
-  button.on("click", function(){
-
-    var userText = $('#description').val()
+  button.on("click", function(event){
+    event.preventDefault();
+    var userText = textarea.value
     localStorage.setItem(hours, userText)
 
     console.log(hours)
@@ -75,3 +77,4 @@ $(document).ready(function(){
   })
   } 
 });
+

@@ -30,6 +30,7 @@ $(document).ready(function(){
     var userInput = $('<textarea>');
     userInput.addClass('col-9');
     row.append(userInput);
+    //MAKING THE SAVED CONTENT APPEAR AFTER REFRESH//
     userInput.val(localStorage.getItem(hour24));
 
     //FOR THE CHANGING COLOURS//
@@ -52,8 +53,6 @@ $(document).ready(function(){
     icon.addClass('save Btn fas fa-save')
     button.append(icon)
 
-    //MAKING THE SAVED CONTENT APPEAR AFTER REFRESH//
-    
     //MAKING THE BUTTON SAVE THE USERS CONTENT TO LOCAL STORAGE//
     button.on("click", function(event){
       event.preventDefault();
@@ -62,7 +61,6 @@ $(document).ready(function(){
       var textarea = row.children[1];
       var userText = textarea.value;
       localStorage.setItem(hour24, userText)
-      console.log(event)
     })
   } 
 });

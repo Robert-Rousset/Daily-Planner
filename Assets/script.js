@@ -9,72 +9,60 @@ $(document).ready(function(){
   var container = $('.container')
 
   //THIS IS TO GET THE STRUCTURE OF A ROW FOR THE AMOUNT OF HOURS//
-  for (let hours = 8; hours <= 17; hours++) {
-  var row = $('<div>')
-  row.addClass('row')
-  container.append(row)
-  
-  //THIS MAKES THE TEXT IN THE HOUR SECTIONS REPRESENT THE RIGHT TIME//
-  var hour = $('<div>')
-  hour.addClass('hour col col-lg-2')
-  hour.text(hours + ":00AM")
-  if(hours === 12){
-    hour.text(hours + ":00PM")
-  }
-  if (hours > 12){
-    hour.text(hours -12 + ":00PM")
-  }
-  row.append(hour);
+  for (let hour24 = 8; hour24 <= 17; hour24++) {
+    var row = $('<div>')
+    row.addClass('row')
+    container.append(row)
+    
+    //THIS MAKES THE TEXT IN THE HOUR SECTIONS REPRESENT THE RIGHT TIME//
+    var hourAMPM = $('<div>')
+    hourAMPM.addClass('hour col-2')
+    hourAMPM.text(hour24 + ":00AM")
+    if(hour24 === 12){
+      hourAMPM.text(hour24 + ":00PM")
+    }
+    if (hour24 > 12){
+      hourAMPM.text(hour24 -12 + ":00PM")
+    }
+    row.append(hourAMPM);
 
+    //THIS IS THE TEXT AREA//
+    var userInput = $('<textarea>');
+    userInput.addClass('col-9');
+    row.append(userInput);
+    userInput.val(localStorage.getItem(hour24));
 
-  //THIS IS THE TEXT AREA//
-  var userInput = $('<textarea>');
-  userInput.addClass('col').attr('id', 'description');
-  row.append(userInput);
-  var textarea = document.getElementById('description')
-  textarea.textContent = localStorage.getItem(8);
-
-
-
-  //FOR THE CHANGING COLOURS//
-    if(hours  < currentTime){
+    //FOR THE CHANGING COLOURS//
+    if(hour24 < currentTime){
       userInput.addClass('past')
-      userInput.removeClass('present')
-      userInput.removeClass('future')
     }
-    if(hours === currentTime){
-      userInput.removeClass('past')
+    if(hour24 === currentTime){
       userInput.addClass('present')
-      userInput.removeClass('future')
     }
-    if(hours > currentTime){
-      userInput.removeClass('past')
-      userInput.removeClass('present')
+    if(hour24 > currentTime){
       userInput.addClass('future')
     }
-  //SAVE BUTTON//
-  var button = $('<button>')
-  button.addClass('saveBtn col col-lg-1')
-  row.append(button)
+    //SAVE BUTTON//
+    var button = $('<button>')
+    button.addClass('saveBtn col-1')
+    row.append(button)
 
-  //CURRENT TIME//
-  var icon = $('<i>')
-  icon.addClass('save Btn fas fa-save')
-  button.append(icon)
+    //CURRENT TIME//
+    var icon = $('<i>')
+    icon.addClass('save Btn fas fa-save')
+    button.append(icon)
 
-  //MAKING THE SAVED CONTENT APPEAR AFTER REFRESH//
-  
-  //MAKING THE BUTTON SAVE THE USERS CONTENT TO LOCAL STORAGE//
-  button.on("click", function(event){
-    event.preventDefault();
-    var userText = textarea.value
-    localStorage.setItem(hours, userText)
-
-    console.log(hours)
-    console.log(currentTime)
-    console.log(userText)
-    console.log(localStorage.getItem(hours))
-  })
+    //MAKING THE SAVED CONTENT APPEAR AFTER REFRESH//
+    
+    //MAKING THE BUTTON SAVE THE USERS CONTENT TO LOCAL STORAGE//
+    button.on("click", function(event){
+      event.preventDefault();
+      var savebtn = event.currentTarget;
+      var row = savebtn.closest('.row');
+      var textarea = row.children[1];
+      var userText = textarea.value;
+      localStorage.setItem(hour24, userText)
+      console.log(event)
+    })
   } 
 });
-

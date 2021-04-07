@@ -23,11 +23,6 @@ textarea{
   border-bottom: 10px solid black;
 }
 
-.description{
-  padding-left: 50px;
-  white-space: pre-wrap;
-}
-
 .time-block{
   text-align: center;
   border-radius: 15px;
